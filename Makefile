@@ -4,6 +4,9 @@ run:
 generate:
 	go generate ./...
 
+test:
+	go test -v ./...
+
 fmt:
 	go fmt ./...
 
