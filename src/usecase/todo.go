@@ -2,8 +2,9 @@
 package usecase
 
 import (
-	"hello-go-mock/src/entity"
 	"time"
+
+	"hello-go-mock/src/entity"
 )
 
 type ToDoWriter interface {

@@ -3,3 +3,9 @@ run:
 
 generate:
 	go generate ./...
+
+fmt:
+	go fmt ./...
+
+ver:
+	go vet ./...
