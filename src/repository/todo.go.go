@@ -2,22 +2,31 @@ package repository
 
 import (
 	"encoding/json"
-	"fmt"
+	"os"
+
+	"github.com/pkg/errors"
+	"github.com/sirupsen/logrus"
+
 	"hello-go-mock/src/entity"
 	"hello-go-mock/src/usecase"
 )
 
-type toDoWriterStdout struct{}
+type ToDoWriterStdout struct{}
 
 func NewToDoWriterStdout() usecase.ToDoWriter {
-	return &toDoWriterStdout{}
+	logrus.SetFormatter(&logrus.JSONFormatter{})
+	logrus.SetOutput(os.Stdout)
+	return &ToDoWriterStdout{}
 }
 
-func (s *toDoWriterStdout) CreateToDo(t entity.ToDo) error {
+func (s *ToDoWriterStdout) CreateToDo(t entity.ToDo) error {
 	data, err := json.Marshal(t)
 	if err != nil {
-		return err
+		return errors.WithStack(err)
 	}
-	fmt.Println(string(data))
+	logrus.WithFields(logrus.Fields{
+		"reciever": "ToDoWriterStdout",
+		"method":   "CreateToDo",
+	}).Info(string(data))
 	return nil
 }

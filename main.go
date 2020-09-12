@@ -1,17 +1,13 @@
 package main
 
 import (
-	"hello-go-mock/src/entity"
 	"hello-go-mock/src/repository"
-	"time"
+	"hello-go-mock/src/usecase"
 )
 
 func main() {
-	repo := repository.NewToDoWriterStdout()
-	todo := entity.ToDo{
-		Title: "mock tamesu yo",
-		Done:  false,
-		Limit: time.Now(),
+	svc := usecase.ToDoService{
+		ToDoWriter: repository.NewToDoWriterStdout(),
 	}
-	repo.CreateToDo(todo)
+	svc.SaveTodo("task dayo")
 }
