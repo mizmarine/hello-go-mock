@@ -1,5 +1,5 @@
 run:
 	go run main.go
 
-mockgen:
-	mockgen ./...
+generate:
+	go generate ./...
