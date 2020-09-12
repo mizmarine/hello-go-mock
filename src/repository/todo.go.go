@@ -4,11 +4,12 @@ import (
 	"encoding/json"
 	"fmt"
 	"hello-go-mock/src/entity"
+	"hello-go-mock/src/usecase"
 )
 
 type toDoWriterStdout struct{}
 
-func NewToDoWriterStdout() *toDoWriterStdout {
+func NewToDoWriterStdout() usecase.ToDoWriter {
 	return &toDoWriterStdout{}
 }
 

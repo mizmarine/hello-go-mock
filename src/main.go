@@ -15,7 +15,3 @@ func main() {
 	}
 	repo.CreateToDo(todo)
 }
-
-type ToDoWriter interface {
-	CreateToDo(t entity.ToDo) error
-}
