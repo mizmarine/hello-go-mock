@@ -1,11 +1,11 @@
 package usecase
 
 import (
-	"fmt"
 	"github.com/golang/mock/gomock"
 	"hello-go-mock/src/entity"
 	"hello-go-mock/src/usecase/mock"
 	"testing"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestToDoService_SaveTodo(t *testing.T) {
@@ -17,14 +17,18 @@ func TestToDoService_SaveTodo(t *testing.T) {
 		ToDoWriter: writer,
 	}
 
+	title := "test dayo"
+
 	writer.
 		EXPECT().
 		CreateToDo(gomock.Any()).
-		Do(func(t entity.ToDo) {
-			fmt.Println(t)
+		Do(func(todo entity.ToDo) {
+			assert.Equal(t, title, todo.Title)
+			assert.Equal(t, false, todo.Done)
 			return
 		}).
-		Return(nil)
+		Return(nil).
+		Times(1)
 
-	svc.SaveTodo("test dayo")
+	svc.SaveTodo(title)
 }
