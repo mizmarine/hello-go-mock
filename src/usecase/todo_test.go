@@ -1,11 +1,13 @@
 package usecase
 
 import (
+	"testing"
+
 	"github.com/golang/mock/gomock"
+	"github.com/stretchr/testify/assert"
+
 	"hello-go-mock/src/entity"
 	"hello-go-mock/src/usecase/mock"
-	"testing"
-	"github.com/stretchr/testify/assert"
 )
 
 func TestToDoService_SaveTodo(t *testing.T) {
